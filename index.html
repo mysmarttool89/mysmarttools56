@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Tool Box - Free Image & PDF Tools</title>
-    
+
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts (Poppins) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Custom CSS for Animations and Styling -->
     <style>
         /* Base font and dark mode setup */
@@ -76,252 +76,353 @@
             animation-delay: 0.5s;
             animation-fill-mode: forwards;
         }
+
+        /* Search results styles */
+        .search-results-count {
+            display: none;
+        }
+        .search-active .search-results-count {
+            display: block;
+        }
+        .search-active .section-title {
+            display: none;
+        }
     </style>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
-    <!-- ========== NAVBAR ========== -->
-    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0">
-                    <a href="#" class="text-2xl font-bold text-gray-900 dark:text-white initial-animate" data-animation="slide-in-left">
-                        <span class="text-red-500">❤️</span> Smart Tool Box
-                    </a>
-                </div>
+<!-- ========== NAVBAR ========== -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+                <a href="#" class="text-2xl font-bold text-gray-900 dark:text-white initial-animate" data-animation="slide-in-left">
+                    <span class="text-red-500">❤️</span> Smart Tool Box
+                </a>
+            </div>
 
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors duration-200">Home</a>
-                    <div class="relative group">
-                        <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors duration-200">
-                            Image Tools <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        <div class="absolute hidden group-hover:block w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-2 animate-fade-in-down">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-gray-700 hover:text-red-500">JPG to PDF</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-gray-700 hover:text-red-500">Image to KB</a>
-                        </div>
-                    </div>
-                    <div class="relative group">
-                        <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors duration-200">
-                           PDF Tools <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                         <div class="absolute hidden group-hover:block w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-2 animate-fade-in-down">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-gray-700 hover:text-red-500">Merge PDF</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-gray-700 hover:text-red-500">Compress PDF</a>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <input type="search" placeholder="Search PDF or image tools…" class="w-64 pl-4 pr-10 py-2 border border-gray-300 dark:border-gray-600 rounded-full bg-gray-100 dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-red-400 dark:focus:ring-red-500 focus:scale-105 transition-all duration-300">
-                    </div>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-800 dark:text-gray-200 hover:text-red-500 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors duration-200">Home</a>
+                <div class="relative group">
+                    <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors duration-200">
+                        Image Tools <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                </div>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden pb-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-b-lg">
-                <a href="#" class="block py-2 px-4 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-gray-700 rounded">Home</a>
-                <a href="#" class="block py-2 px-4 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-gray-700 rounded">Image Tools</a>
-                <a href="#" class="block py-2 px-4 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-gray-700 rounded">PDF Tools</a>
-                <div class="mt-4 px-4">
-                    <input type="search" placeholder="Search tools..." class="w-full pl-4 pr-10 py-2 border border-gray-300 dark:border-gray-600 rounded-full bg-gray-100 dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-red-400">
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <!-- ========== HERO SECTION ========== -->
-        <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-28 overflow-hidden bg-white dark:bg-gray-900">
-            <div class="absolute top-0 left-0 w-full h-full opacity-10 dark:opacity-20">
-                <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-red-200 dark:bg-red-800 rounded-full mix-blend-multiply filter blur-xl" style="animation: float 4s ease-in-out infinite;"></div>
-                <div class="absolute top-1/2 right-1/4 w-32 h-32 bg-blue-200 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl" style="animation: float 4s ease-in-out infinite 2s;"></div>
-            </div>
-
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                <div class="typewriter initial-animate" data-animation="fade-in-up">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
-                        🧰 Every tool you need for PDFs & Images
-                    </h1>
-                </div>
-                <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-600 dark:text-gray-400 initial-animate" data-animation="fade-in-up" data-delay="1800ms">
-                    All are 100% FREE and easy to use! Merge, split, compress, convert, crop, watermark, and more with just a few clicks.
-                </p>
-            </div>
-        </section>
-
-        <!-- ========== MAIN TOOLS SECTION ========== -->
-        <section class="py-16 sm:py-24 bg-gray-50 dark:bg-gray-900">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <!-- IMAGE & NUMBER TOOLS -->
-                <div class="mb-16">
-                    <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">🔷 Image & Number Tools</h2>
-                    <div id="image-tools-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
-                        <!-- Tools will be injected here by JavaScript -->
+                    <div class="absolute hidden group-hover:block w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-2 animate-fade-in-down">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-gray-700 hover:text-red-500">JPG to PDF</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-gray-700 hover:text-red-500">Image to KB</a>
                     </div>
                 </div>
-
-                <!-- PDF TOOLS -->
-                <div>
-                    <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">🔴 PDF Tools</h2>
-                    <div id="pdf-tools-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
-                        <!-- Tools will be injected here by JavaScript -->
+                <div class="relative group">
+                    <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors duration-200">
+                       PDF Tools <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                     <div class="absolute hidden group-hover:block w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-2 animate-fade-in-down">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-gray-700 hover:text-red-500">Merge PDF</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-gray-700 hover:text-red-500">Compress PDF</a>
                     </div>
                 </div>
+                <div class="relative">
+                    <input id="main-search" type="search" placeholder="Search PDF or image tools…" class="w-64 pl-4 pr-10 py-2 border border-gray-300 dark:border-gray-600 rounded-full bg-gray-100 dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-red-400 dark:focus:ring-red-500 focus:scale-105 transition-all duration-300">
+                </div>
             </div>
-        </section>
-    </main>
 
-    <!-- ========== FOOTER ========== -->
-    <footer class="bg-gray-800 dark:bg-black text-gray-300">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold text-white mb-2">✅ Smart Tool Box</h3>
-                    <p class="text-gray-400">Free & easy PDF and image tools, all in one place.</p>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-red-400 hover:underline transition-colors">Home</a></li>
-                        <li><a href="#" class="hover:text-red-400 hover:underline transition-colors">All PDF Tools</a></li>
-                        <li><a href="#" class="hover:text-red-400 hover:underline transition-colors">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold text-white mb-4">Contact</h4>
-                    <p class="mb-4">📩 Email: <a href="mailto:support@smarttoolbox.com" class="hover:text-red-400 hover:underline">support@smarttoolbox.com</a></p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-all transform hover:scale-110 hover:-rotate-6">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-all transform hover:scale-110 hover:rotate-6">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-8 border-t border-gray-700 pt-6 text-center text-gray-500">
-                <p>&copy; 2025 Smart Tool Box. All rights reserved.</p>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-800 dark:text-gray-200 hover:text-red-500 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
             </div>
         </div>
-    </footer>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-b-lg">
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-gray-700 rounded">Home</a>
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-gray-700 rounded">Image Tools</a>
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-gray-700 rounded">PDF Tools</a>
+            <div class="mt-4 px-4">
+                <input id="mobile-search" type="search" placeholder="Search tools..." class="w-full pl-4 pr-10 py-2 border border-gray-300 dark:border-gray-600 rounded-full bg-gray-100 dark:bg-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-red-400">
+            </div>
+        </div>
+    </nav>
+</header>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // --- DATA FOR TOOLS ---
-            const imageToolsData = [
-                { name: "JPG to PDF", desc: "Convert your images to PDF format.", badge: { text: "New!", color: "bg-green-500", anim: "animate-bounce" } },
-                { name: "PDF to JPG", desc: "Extract high-quality images from PDF.", badge: { text: "Popular", color: "bg-blue-500", anim: "animate-pulse" } },
-                { name: "PNG to PDF", desc: "Combine PNG images into PDF." }, { name: "PDF to PNG", desc: "Convert PDF pages into PNGs." },
-                { name: "Image to KB", desc: "Resize images by file size." }, { name: "Merge Images to PDF", desc: "Combine multiple images into one PDF." },
-                { name: "Extract Images", desc: "Extract embedded images from PDF." }, { name: "Crop PDF", desc: "Trim edges of PDF pages." },
-                { name: "Convert to Grayscale", desc: "Make PDF pages black & white." }, { name: "Auto Rotate", desc: "Automatically correct page orientation." },
-                { name: "Add Page Numbers", desc: "Number your PDF pages." }, { name: "Reorder Pages", desc: "Drag and rearrange PDF pages." },
-                { name: "Print PDF", desc: "Get print-ready PDF layouts." }
-            ];
+<main>
+    <!-- ========== HERO SECTION ========== -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-28 overflow-hidden bg-white dark:bg-gray-900">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 dark:opacity-20">
+            <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-red-200 dark:bg-red-800 rounded-full mix-blend-multiply filter blur-xl" style="animation: float 4s ease-in-out infinite;"></div>
+            <div class="absolute top-1/2 right-1/4 w-32 h-32 bg-blue-200 dark:bg-blue-800 rounded-full mix-blend-multiply filter blur-xl" style="animation: float 4s ease-in-out infinite 2s;"></div>
+        </div>
 
-            const pdfToolsData = [
-                { name: "Merge PDF", desc: "Combine multiple PDFs into one.", badge: { text: "Popular", color: "bg-blue-500", anim: "animate-pulse" } },
-                { name: "Split PDF", desc: "Split PDF pages by range." }, { name: "Compress PDF", desc: "Reduce PDF file size.", badge: { text: "Popular", color: "bg-blue-500", anim: "animate-pulse" } },
-                { name: "Protect PDF", desc: "Add password protection." }, { name: "Unlock PDF", desc: "Remove password restrictions." },
-                { name: "Sign PDF", desc: "Add e-signature to your files.", badge: { text: "New!", color: "bg-green-500", anim: "animate-bounce" } },
-                { name: "Watermark PDF", desc: "Add watermark text or image." }, { name: "Rotate PDF", desc: "Rotate selected pages." },
-                { name: "Edit PDF", desc: "Make basic changes in PDF." }, { name: "Fill PDF Forms", desc: "Fill and save forms digitally." },
-                { name: "PDF to Word", desc: "Convert PDF to editable Word docs." }, { name: "Word to PDF", desc: "Convert Word to PDF." },
-                { name: "PDF to Excel", desc: "Convert PDF tables to Excel." }, { name: "Excel to PDF", desc: "Convert Excel to PDF." },
-                { name: "PDF to PPT", desc: "Convert PDF to PowerPoint." }, { name: "PPT to PDF", desc: "Convert PowerPoint to PDF." },
-                { name: "HTML to PDF", desc: "Convert web pages to PDF." }, { name: "PDF to HTML", desc: "Convert PDF to HTML code." },
-                { name: "PDF to PDF/A", desc: "Archive-friendly conversion.", badge: { text: "Updated", color: "bg-purple-500" } },
-                { name: "Repair PDF", desc: "Fix damaged PDF files." }, { name: "Flatten PDF", desc: "Remove layers/forms to make static." },
-                { name: "Shrink PDF", desc: "Further reduce size for web use." }, { name: "Organize PDF", desc: "Rearrange pages visually." },
-                { name: "Encrypt / Decrypt PDF", desc: "Add or remove encryption." }, { name: "Compare PDFs", desc: "Highlight differences between two PDFs." },
-                { name: "Redact PDF", desc: "Blackout confidential content." }, { name: "OCR PDF", desc: "Convert scanned PDFs to text.", badge: { text: "New!", color: "bg-green-500", anim: "animate-bounce" } },
-                { name: "Scan to PDF", desc: "Capture from camera and save as PDF." }, { name: "Extract Text", desc: "Extract all text from a PDF." },
-                { name: "ZIP to PDF", desc: "Unzip and convert documents." }, { name: "PDF to ZIP", desc: "Compress into ZIP." },
-                { name: "EPUB to PDF", desc: "Convert e-books to PDF." }, { name: "PDF to EPUB", desc: "Convert PDF to e-book format." },
-                { name: "Excel to CSV", desc: "Convert Excel sheets to CSV." }, { name: "CSV to PDF", desc: "Convert CSV files to PDF." },
-                { name: "Split by Range", desc: "e.g., 1–3, 4–7" }, { name: "Split by Bookmark", desc: "Split based on PDF bookmarks." },
-                { name: "Metadata Editor", desc: "View and edit PDF metadata." }
-            ];
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="typewriter initial-animate" data-animation="fade-in-up">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
+                    🧰 Every tool you need for PDFs & Images
+                </h1>
+            </div>
+            <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-600 dark:text-gray-400 initial-animate" data-animation="fade-in-up" data-delay="1800ms">
+                All are 100% FREE and easy to use! Merge, split, compress, convert, crop, watermark, and more with just a few clicks.
+            </p>
+        </div>
+    </section>
 
-            // --- FUNCTION TO GENERATE TOOL CARDS ---
-            function createToolCard(tool) {
-                const badgeHtml = tool.badge ? `<div class="absolute top-2 right-2"><span class="text-xs font-semibold text-white ${tool.badge.color} px-2 py-1 rounded-full ${tool.badge.anim || ''}">${tool.badge.text}</span></div>` : '';
-                return `
-                    <a href="#" class="tool-card-hidden group p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl hover:scale-105 hover:ring-2 hover:ring-red-400 transition-all duration-300 flex flex-col items-center text-center relative">
-                        ${badgeHtml}
-                        <div class="mb-4 text-red-500">
-                             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">${tool.name}</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">${tool.desc}</p>
+    <!-- ========== MAIN TOOLS SECTION ========== -->
+    <section class="py-16 sm:py-24 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Search Results Count -->
+            <div id="search-results-count" class="search-results-count text-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+                    <span id="results-count">0</span> tools found for "<span id="search-query"></span>"
+                </h2>
+            </div>
+            
+            <!-- IMAGE & NUMBER TOOLS -->
+            <div class="mb-16">
+                <h2 class="section-title text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">🔷 Image & Number Tools</h2>
+                <div id="image-tools-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+                    <!-- Tools will be injected here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- PDF TOOLS -->
+            <div>
+                <h2 class="section-title text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">🔴 PDF Tools</h2>
+                <div id="pdf-tools-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+                    <!-- Tools will be injected here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- No Results Message -->
+            <div id="no-results" class="hidden text-center py-12">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300">No tools found</h3>
+                <p class="text-gray-500 dark:text-gray-400 mt-2">Try different search terms or browse our categories</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-gray-800 dark:bg-black text-gray-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold text-white mb-2">✅ Smart Tool Box</h3>
+                <p class="text-gray-400">Free & easy PDF and image tools, all in one place.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-red-400 hover:underline transition-colors">Home</a></li>
+                    <li><a href="#" class="hover:text-red-400 hover:underline transition-colors">All PDF Tools</a></li>
+                    <li><a href="#" class="hover:text-red-400 hover:underline transition-colors">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold text-white mb-4">Contact</h4>
+                <p class="mb-4">📩 Email: <a href="mailto:support@smarttoolbox.com" class="hover:text-red-400 hover:underline">support@smarttoolbox.com</a></p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-all transform hover:scale-110 hover:-rotate-6">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
                     </a>
-                `;
+                    <a href="#" class="text-gray-400 hover:text-white transition-all transform hover:scale-110 hover:rotate-6">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 border-t border-gray-700 pt-6 text-center text-gray-500">
+            <p>© 2025 Smart Tool Box. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // --- DATA FOR TOOLS ---
+        const imageToolsData = [
+            { name: "JPG to PDF", desc: "Convert your images to PDF format.", badge: { text: "New!", color: "bg-green-500", anim: "animate-bounce" } },
+            { name: "PDF to JPG", desc: "Extract high-quality images from PDF.", badge: { text: "Popular", color: "bg-blue-500", anim: "animate-pulse" } },
+            { name: "PNG to PDF", desc: "Combine PNG images into PDF." }, { name: "PDF to PNG", desc: "Convert PDF pages into PNGs." },
+            { name: "Image to KB", desc: "Resize images by file size." }, { name: "Merge Images to PDF", desc: "Combine multiple images into one PDF." },
+            { name: "Extract Images", desc: "Extract embedded images from PDF." }, { name: "Crop PDF", desc: "Trim edges of PDF pages." },
+            { name: "Convert to Grayscale", desc: "Make PDF pages black & white." }, { name: "Auto Rotate", desc: "Automatically correct page orientation." },
+            { name: "Add Page Numbers", desc: "Number your PDF pages." }, { name: "Reorder Pages", desc: "Drag and rearrange PDF pages." },
+            { name: "Print PDF", desc: "Get print-ready PDF layouts." },
+            // New tools added here
+            { name: "QR Code Generator", desc: "Create custom QR codes for URLs, text, etc.", emoji: "📲", badge: { text: "New!", color: "bg-green-500", anim: "animate-bounce" } },
+            { name: "Barcode Generator", desc: "Generate barcodes in various formats.", emoji: "📊" },
+            { name: "QR Scanner (Webcam)", desc: "Scan QR codes using your camera.", emoji: "🔍", badge: { text: "Popular", color: "bg-blue-500", anim: "animate-pulse" } },
+            { name: "Age Calculator", desc: "Calculate age from birth date.", emoji: "🎂" },
+            { name: "BMI Calculator", desc: "Calculate Body Mass Index.", emoji: "⚖️" }
+        ];
+
+        const pdfToolsData = [
+            { name: "Merge PDF", desc: "Combine multiple PDFs into one.", badge: { text: "Popular", color: "bg-blue-500", anim: "animate-pulse" } },
+            { name: "Split PDF", desc: "Split PDF pages by range." }, { name: "Compress PDF", desc: "Reduce PDF file size.", badge: { text: "Popular", color: "bg-blue-500", anim: "animate-pulse" } },
+            { name: "Protect PDF", desc: "Add password protection." }, { name: "Unlock PDF", desc: "Remove password restrictions." },
+            { name: "Sign PDF", desc: "Add e-signature to your files.", badge: { text: "New!", color: "bg-green-500", anim: "animate-bounce" } },
+            { name: "Watermark PDF", desc: "Add watermark text or image." }, { name: "Rotate PDF", desc: "Rotate selected pages." },
+            { name: "Edit PDF", desc: "Make basic changes in PDF." }, { name: "Fill PDF Forms", desc: "Fill and save forms digitally." },
+            { name: "PDF to Word", desc: "Convert PDF to editable Word docs." }, { name: "Word to PDF", desc: "Convert Word to PDF." },
+            { name: "PDF to Excel", desc: "Convert PDF tables to Excel." }, { name: "Excel to PDF", desc: "Convert Excel to PDF." },
+            { name: "PDF to PPT", desc: "Convert PDF to PowerPoint." }, { name: "PPT to PDF", desc: "Convert PowerPoint to PDF." },
+            { name: "HTML to PDF", desc: "Convert web pages to PDF." }, { name: "PDF to HTML", desc: "Convert PDF to HTML code." },
+            { name: "PDF to PDF/A", desc: "Archive-friendly conversion.", badge: { text: "Updated", color: "bg-purple-500" } },
+            { name: "Repair PDF", desc: "Fix damaged PDF files." }, { name: "Flatten PDF", desc: "Remove layers/forms to make static." },
+            { name: "Shrink PDF", desc: "Further reduce size for web use." }, { name: "Organize PDF", desc: "Rearrange pages visually." },
+            { name: "Encrypt / Decrypt PDF", desc: "Add or remove encryption." }, { name: "Compare PDFs", desc: "Highlight differences between two PDFs." },
+            { name: "Redact PDF", desc: "Blackout confidential content." }, { name: "OCR PDF", desc: "Convert scanned PDFs to text.", badge: { text: "New!", color: "bg-green-500", anim: "animate-bounce" } },
+            { name: "Scan to PDF", desc: "Capture from camera and save as PDF." }, { name: "Extract Text", desc: "Extract all text from a PDF." },
+            { name: "ZIP to PDF", desc: "Unzip and convert documents." }, { name: "PDF to ZIP", desc: "Compress into ZIP." },
+            { name: "EPUB to PDF", desc: "Convert e-books to PDF." }, { name: "PDF to EPUB", desc: "Convert PDF to e-book format." },
+            { name: "Excel to CSV", desc: "Convert Excel sheets to CSV." }, { name: "CSV to PDF", desc: "Convert CSV files to PDF." },
+            { name: "Split by Range", desc: "e.g., 1–3, 4–7" }, { name: "Split by Bookmark", desc: "Split based on PDF bookmarks." },
+            { name: "Metadata Editor", desc: "View and edit PDF metadata." }
+        ];
+
+        // --- FUNCTION TO GENERATE TOOL CARDS ---
+        function createToolCard(tool) {
+            const badgeHtml = tool.badge ? `<div class="absolute top-2 right-2"><span class="text-xs font-semibold text-white ${tool.badge.color} px-2 py-1 rounded-full ${tool.badge.anim || ''}">${tool.badge.text}</span></div>` : '';
+            const emoji = tool.emoji || '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>';
+            
+            return `
+                <a href="#" class="tool-card tool-card-hidden group p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl hover:scale-105 hover:ring-2 hover:ring-red-400 transition-all duration-300 flex flex-col items-center text-center relative" data-name="${tool.name.toLowerCase()}" data-desc="${tool.desc.toLowerCase()}">
+                    ${badgeHtml}
+                    <div class="mb-4 text-red-500 text-4xl">
+                        ${emoji}
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">${tool.name}</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">${tool.desc}</p>
+                </a>
+            `;
+        }
+
+        // --- POPULATE GRIDS ---
+        const imageGrid = document.getElementById('image-tools-grid');
+        const pdfGrid = document.getElementById('pdf-tools-grid');
+        imageGrid.innerHTML = imageToolsData.map(createToolCard).join('');
+        pdfGrid.innerHTML = pdfToolsData.map(createToolCard).join('');
+
+        // --- SEARCH FUNCTIONALITY ---
+        const mainSearch = document.getElementById('main-search');
+        const mobileSearch = document.getElementById('mobile-search');
+        const searchResultsCount = document.getElementById('search-results-count');
+        const resultsCount = document.getElementById('results-count');
+        const searchQuery = document.getElementById('search-query');
+        const noResults = document.getElementById('no-results');
+        
+        function performSearch(query) {
+            query = query.toLowerCase().trim();
+            const allTools = document.querySelectorAll('.tool-card');
+            let visibleCount = 0;
+
+            if (query === '') {
+                // Show all tools if search is empty
+                allTools.forEach(tool => {
+                    tool.classList.remove('hidden');
+                });
+                document.body.classList.remove('search-active');
+                noResults.classList.add('hidden');
+                return;
             }
 
-            // --- POPULATE GRIDS ---
-            const imageGrid = document.getElementById('image-tools-grid');
-            const pdfGrid = document.getElementById('pdf-tools-grid');
-            imageGrid.innerHTML = imageToolsData.map(createToolCard).join('');
-            pdfGrid.innerHTML = pdfToolsData.map(createToolCard).join('');
-
-            // --- NAVBAR LOGIC ---
-            const navbar = document.getElementById('navbar');
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('bg-white/80', 'dark:bg-gray-900/80', 'backdrop-blur-sm', 'shadow-md');
+            // Filter tools
+            allTools.forEach(tool => {
+                const name = tool.dataset.name;
+                const desc = tool.dataset.desc;
+                
+                if (name.includes(query) || desc.includes(query)) {
+                    tool.classList.remove('hidden');
+                    visibleCount++;
                 } else {
-                    navbar.classList.remove('bg-white/80', 'dark:bg-gray-900/80', 'backdrop-blur-sm', 'shadow-md');
+                    tool.classList.add('hidden');
                 }
             });
 
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+            // Update UI based on results
+            if (visibleCount > 0) {
+                resultsCount.textContent = visibleCount;
+                searchQuery.textContent = query;
+                document.body.classList.add('search-active');
+                noResults.classList.add('hidden');
+            } else {
+                document.body.classList.add('search-active');
+                noResults.classList.remove('hidden');
+            }
+        }
 
-            // --- INITIAL LOAD ANIMATION LOGIC ---
-            const animatedElements = document.querySelectorAll('.initial-animate');
-            animatedElements.forEach(el => {
-                const delay = el.dataset.delay || '0ms';
-                const animation = el.dataset.animation || 'fade-in-up';
-                el.style.animationDelay = delay;
-                el.classList.add(`animate-${animation}`);
-                el.classList.remove('initial-animate');
-            });
+        // Event listeners for search
+        mainSearch.addEventListener('input', (e) => {
+            performSearch(e.target.value);
+        });
 
-            // --- STAGGERED GRID ANIMATION LOGIC ---
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const cards = entry.target.querySelectorAll('.tool-card-hidden');
-                        cards.forEach((card, index) => {
-                            setTimeout(() => {
-                                card.classList.remove('tool-card-hidden');
-                                card.classList.add('animate-fade-in-up');
-                            }, index * 80); // 80ms delay between cards
-                        });
-                        observer.unobserve(entry.target); // Animate only once
-                    }
-                });
-            }, { threshold: 0.1 }); // Trigger when 10% of the grid is visible
+        mobileSearch.addEventListener('input', (e) => {
+            performSearch(e.target.value);
+        });
 
-            document.querySelectorAll('#image-tools-grid, #pdf-tools-grid').forEach(grid => {
-                observer.observe(grid);
+        // Clear search when clicking logo or home
+        document.querySelectorAll('[href="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                mainSearch.value = '';
+                mobileSearch.value = '';
+                performSearch('');
             });
         });
-    </script>
+
+        // --- NAVBAR LOGIC ---
+        const navbar = document.getElementById('navbar');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/80', 'dark:bg-gray-900/80', 'backdrop-blur-sm', 'shadow-md');
+            } else {
+                navbar.classList.remove('bg-white/80', 'dark:bg-gray-900/80', 'backdrop-blur-sm', 'shadow-md');
+            }
+        });
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- INITIAL LOAD ANIMATION LOGIC ---
+        const animatedElements = document.querySelectorAll('.initial-animate');
+        animatedElements.forEach(el => {
+            const delay = el.dataset.delay || '0ms';
+            const animation = el.dataset.animation || 'fade-in-up';
+            el.style.animationDelay = delay;
+            el.classList.add(`animate-${animation}`);
+            el.classList.remove('initial-animate');
+        });
+
+        // --- STAGGERED GRID ANIMATION LOGIC ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const cards = entry.target.querySelectorAll('.tool-card-hidden');
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.remove('tool-card-hidden');
+                            card.classList.add('animate-fade-in-up');
+                        }, index * 80); // 80ms delay between cards
+                    });
+                    observer.unobserve(entry.target); // Animate only once
+                }
+            });
+        }, { threshold: 0.1 }); // Trigger when 10% of the grid is visible
+
+        document.querySelectorAll('#image-tools-grid, #pdf-tools-grid').forEach(grid => {
+            observer.observe(grid);
+        });
+    });
+</script>
 </body>
 </html>
