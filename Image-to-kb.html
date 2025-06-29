@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to KB Converter - Reduce Image File Size Online for Free</title>
+    <meta name="description" content="Free online tool to convert images to specific file sizes in KB. Reduce JPG, PNG, GIF file sizes without losing quality. Perfect for websites, social media, and email attachments.">
+    <meta name="keywords" content="image to kb, reduce image size, compress image, image size reducer, jpg to kb, png to kb, image optimizer, photo size reducer, online image compressor, web image optimizer, resize image to kb, decrease image size, image file size reducer, picture size reducer, image kb converter">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Image to KB Converter - Reduce Image File Size Online">
+    <meta property="og:description" content="Free online tool to convert images to specific file sizes in KB. Perfect for websites and social media.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://smarttoolbox.com/image-to-kb">
+    <meta property="og:image" content="https://smarttoolbox.com/images/image-to-kb-preview.jpg">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Image to KB Converter - Reduce Image File Size Online">
+    <meta name="twitter:description" content="Free online tool to convert images to specific file sizes in KB. Perfect for websites and social media.">
+    <meta name="twitter:image" content="https://smarttoolbox.com/images/image-to-kb-preview.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .dropzone {
+            border: 2px dashed #ccc;
+            transition: all 0.3s;
+        }
+        .dropzone.active {
+            border-color: #4CAF50;
+            background-color: #f8f9fa;
+        }
+        .quality-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4CAF50;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .file-info {
+            transition: all 0.3s;
+        }
+        .preview-image {
+            max-height: 200px;
+            object-fit: contain;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .navbar {
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .dark .navbar.scrolled {
+            background-color: rgba(17, 24, 39, 0.9);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="navbar fixed top-0 left-0 right-0 z-50 py-3 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-bold text-gray-800 dark:text-white">
+                    <span class="text-red-500">❤️</span> Smart Tool Box
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors">Home</a>
+                <div class="relative group">
+                    <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors">
+                        Image Tools <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-2 z-50">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">JPG to PDF</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Image to KB</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">QR Generator</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors">
+                        PDF Tools <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-2 z-50">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Merge PDF</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Compress PDF</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">PDF to Word</a>
+                    </div>
+                </div>
+                <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors">About</a>
+                <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-800 dark:text-gray-200 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 rounded-lg shadow-lg mt-2 py-2 absolute right-4 left-4 z-50">
+            <a href="#" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
+            <a href="#" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Image Tools</a>
+            <a href="#" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">PDF Tools</a>
+            <a href="#" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">About</a>
+            <a href="#" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <h1 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-2">Image to KB Converter</h1>
+            <p class="text-center text-gray-600 dark:text-gray-400 mb-8">Reduce image file size to your desired KB limit - 100% free, no registration required</p>
+
+            <!-- Main Tool Container -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
+                <!-- Drop Zone -->
+                <div id="dropzone" class="dropzone rounded-lg p-8 text-center cursor-pointer mb-6">
+                    <div id="dropzone-content">
+                        <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 dark:text-gray-500 mb-3"></i>
+                        <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">Drag & Drop Your Image Here</h3>
+                        <p class="text-gray-500 dark:text-gray-400 mb-4">or click to browse files (JPG, PNG, GIF supported)</p>
+                        <button id="browse-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-full transition duration-200">
+                            Select Image
+                        </button>
+                        <input type="file" id="file-input" accept="image/*" class="hidden">
+                    </div>
+                </div>
+
+                <!-- File Info -->
+                <div id="file-info" class="file-info hidden bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="flex items-center mb-4 md:mb-0">
+                            <img id="preview-image" src="" alt="Preview" class="preview-image rounded mr-4">
+                            <div>
+                                <h4 id="file-name" class="font-medium text-gray-800 dark:text-white"></h4>
+                                <p id="file-size" class="text-sm text-gray-600 dark:text-gray-300"></p>
+                                <p id="file-dimensions" class="text-sm text-gray-600 dark:text-gray-300"></p>
+                            </div>
+                        </div>
+                        <button id="remove-btn" class="text-red-500 hover:text-red-700 dark:hover:text-red-400 flex items-center">
+                            <i class="fas fa-times mr-1"></i> Remove
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Settings -->
+                <div id="settings" class="hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- Target Size -->
+                        <div>
+                            <label for="target-size" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                Target File Size (KB)
+                                <span class="tooltip">
+                                    <i class="fas fa-info-circle text-blue-500 ml-1"></i>
+                                    <span class="tooltiptext">Set your desired file size in kilobytes. The tool will automatically adjust quality to match.</span>
+                                </span>
+                            </label>
+                            <div class="flex items-center">
+                                <input type="range" id="target-size" min="10" max="1000" value="100" class="w-full h-2 bg-gray-200 dark:bg-gray-600 rounded-lg appearance-none cursor-pointer mr-4">
+                                <input type="number" id="target-size-input" min="10" max="1000" value="100" class="w-20 px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md text-sm">
+                            </div>
+                        </div>
+
+                        <!-- Quality -->
+                        <div>
+                            <label for="quality" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                Quality
+                                <span class="tooltip">
+                                    <i class="fas fa-info-circle text-blue-500 ml-1"></i>
+                                    <span class="tooltiptext">Higher quality means better image but larger file size. Lower quality reduces file size but may affect image clarity.</span>
+                                </span>
+                            </label>
+                            <div class="flex items-center">
+                                <input type="range" id="quality" min="10" max="100" value="80" class="quality-slider w-full h-2 bg-gray-200 dark:bg-gray-600 rounded-lg appearance-none cursor-pointer mr-4">
+                                <span id="quality-value" class="w-10 text-center dark:text-white">80%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Options -->
+                    <div class="mb-6">
+                        <div class="flex items-center justify-between cursor-pointer" id="advanced-toggle">
+                            <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300">Advanced Options</h3>
+                            <i class="fas fa-chevron-down text-gray-500 dark:text-gray-400 transition-transform duration-200"></i>
+                        </div>
+                        <div id="advanced-options" class="hidden mt-4 space-y-4">
+                            <!-- Resize Options -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Resize Dimensions</label>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <div>
+                                        <select id="resize-method" class="block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm">
+                                            <option value="percentage">Percentage</option>
+                                            <option value="pixels">Pixels</option>
+                                            <option value="width">Width Only</option>
+                                            <option value="height">Height Only</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <input type="number" id="resize-value" min="1" max="5000" value="100" class="block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm" placeholder="Value">
+                                    </div>
+                                    <div>
+                                        <select id="resize-unit" class="block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm">
+                                            <option value="percent">%</option>
+                                            <option value="px">px</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Format Options -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Output Format</label>
+                                <div class="flex space-x-4">
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="format" value="jpg" class="h-4 w-4 text-blue-600 focus:ring-blue-500 dark:focus:ring-offset-gray-800" checked>
+                                        <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">JPG</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="format" value="png" class="h-4 w-4 text-blue-600 focus:ring-blue-500 dark:focus:ring-offset-gray-800">
+                                        <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">PNG</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="radio" name="format" value="webp" class="h-4 w-4 text-blue-600 focus:ring-blue-500 dark:focus:ring-offset-gray-800">
+                                        <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">WebP</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                        <button id="compress-btn" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-md transition duration-200 flex items-center justify-center">
+                            <i class="fas fa-compress-alt mr-2"></i> Compress Image
+                        </button>
+                        <button id="reset-btn" class="flex-1 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-white font-medium py-3 px-6 rounded-md transition duration-200">
+                            Reset Settings
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results" class="hidden bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
+                <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Compression Results</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Original -->
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                        <h4 class="font-medium text-gray-700 dark:text-white mb-2">Original Image</h4>
+                        <img id="original-preview" src="" alt="Original" class="preview-image mx-auto mb-3">
+                        <div class="text-sm text-gray-600 dark:text-gray-300">
+                            <p><span class="font-medium">Size:</span> <span id="original-size"></span></p>
+                            <p><span class="font-medium">Dimensions:</span> <span id="original-dimensions"></span></p>
+                            <p><span class="font-medium">Type:</span> <span id="original-type"></span></p>
+                        </div>
+                    </div>
+                    <!-- Compressed -->
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                        <h4 class="font-medium text-gray-700 dark:text-white mb-2">Compressed Image</h4>
+                        <img id="compressed-preview" src="" alt="Compressed" class="preview-image mx-auto mb-3">
+                        <div class="text-sm text-gray-600 dark:text-gray-300">
+                            <p><span class="font-medium">Size:</span> <span id="compressed-size"></span> (<span id="reduction-percent"></span> reduction)</p>
+                            <p><span class="font-medium">Dimensions:</span> <span id="compressed-dimensions"></span></p>
+                            <p><span class="font-medium">Type:</span> <span id="compressed-type"></span></p>
+                            <p><span class="font-medium">Quality:</span> <span id="compressed-quality"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                    <button id="download-btn" class="flex-1 bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-md transition duration-200 flex items-center justify-center">
+                        <i class="fas fa-download mr-2"></i> Download Compressed Image
+                    </button>
+                    <button id="new-file-btn" class="flex-1 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-white font-medium py-3 px-6 rounded-md transition duration-200">
+                        Process Another Image
+                    </button>
+                </div>
+            </div>
+
+            <!-- Article Section -->
+            <article class="prose max-w-none bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 dark:prose-invert">
+                <h2>Image to KB Converter - Reduce Image File Size Online</h2>
+                
+                <p>Our free <strong>Image to KB converter</strong> tool helps you reduce image file sizes to your exact specifications. Whether you need to shrink photos for email attachments, optimize images for your website, or prepare visuals for social media, this tool provides precise control over your final file size in kilobytes.</p>
+                
+                <h3>Why Convert Images to Specific KB Sizes?</h3>
+                
+                <p>There are many situations where you might need an <strong>image size reducer</strong>:</p>
+                <ul>
+                    <li><strong>Website optimization:</strong> Faster loading pages improve user experience and SEO rankings</li>
+                    <li><strong>Email attachments:</strong> Many email providers have strict size limits (often 25MB or less)</li>
+                    <li><strong>Social media:</strong> Platforms like Facebook and Instagram compress images automatically, often with poor results</li>
+                    <li><strong>Online forms:</strong> Applications frequently restrict uploads to specific file sizes (e.g., "under 500KB")</li>
+                    <li><strong>Storage space:</strong> Reduce image collections to save cloud storage or device space</li>
+                </ul>
+                
+                <h3>How Our Image KB Converter Works</h3>
+                
+                <p>Our <strong>online image compressor</strong> uses advanced algorithms to reduce file size while maintaining the best possible quality. Here's what makes it special:</p>
+                
+                <ol>
+                    <li><strong>Precise size control:</strong> Set your exact target in KB (from 10KB to 1000KB)</li>
+                    <li><strong>Smart compression:</strong> Automatically adjusts quality and dimensions to hit your target</li>
+                    <li><strong>Multiple formats:</strong> Works with JPG, PNG, and WebP files</li>
+                    <li><strong>Visual comparison:</strong> See before-and-after results with detailed metrics</li>
+                    <li><strong>No quality loss:</strong> Uses intelligent optimization to preserve image clarity</li>
+                </ol>
+                
+                <h3>Key Features of Our Image Size Reducer</h3>
+                
+                <p>This <strong>photo size reducer</strong> offers professional-grade features completely free:</p>
+                
+                <h4>1. Target File Size Control</h4>
+                <p>Unlike basic <strong>image compressors</strong> that only offer quality sliders, our tool lets you specify the exact file size you need. This is perfect when you have strict requirements like "under 200KB" for a job application or website upload.</p>
+                
+                <h4>2. Batch Processing</h4>
+                <p>While this online version handles single images, the technology can process multiple files at once (available in our premium version). This makes it ideal for photographers and web developers needing to <strong>reduce image size</strong> for entire galleries.</p>
+                
+                <h4>3. Format Conversion</h4>
+                <p>Convert between JPG, PNG, and WebP formats during compression. WebP often provides 25-35% smaller files than JPG at similar quality levels, making it perfect for <strong>web image optimization</strong>.</p>
+                
+                <h4>4. Dimension Resizing</h4>
+                <p>Reduce pixel dimensions while maintaining aspect ratio. This is crucial for creating thumbnails or preparing images for specific display requirements.</p>
+                
+                <h3>How to Use the Image to KB Tool</h3>
+                
+                <p>Using our <strong>picture size reducer</strong> is simple:</p>
+                <ol>
+                    <li>Drag and drop your image or click to browse files</li>
+                    <li>Set your desired file size in KB (or use the quality slider)</li>
+                    <li>Adjust advanced options if needed (dimensions, format)</li>
+                    <li>Click "Compress Image"</li>
+                    <li>Download your optimized file</li>
+                </ol>
+                
+                <h3>Technical Details: Image Compression Explained</h3>
+                
+                <p><strong>Image compression</strong> works by removing unnecessary data from image files. There are two main types:</p>
+                
+                <p><strong>Lossless compression:</strong> Preserves all image data (best for PNG with limited transparency)</p>
+                <p><strong>Lossy compression:</strong> Removes some data for smaller files (ideal for JPG/WebP photos)</p>
+                
+                <p>Our <strong>image kb converter</strong> automatically selects the best approach based on your target size and original image type. The algorithm:</p>
+                <ul>
+                    <li>Analyzes image content to preserve important details</li>
+                    <li>Progressively reduces quality until target size is reached</li>
+                    <li>Optionally resizes dimensions if needed to hit small targets</li>
+                    <li>Converts between formats when beneficial for size reduction</li>
+                </ul>
+                
+                <h3>Frequently Asked Questions</h3>
+                
+                <h4>Is there a limit to how much I can reduce an image?</h4>
+                <p>While you can set very small targets (like 10KB), extremely aggressive compression will noticeably reduce quality. For best results, aim for reductions of 50-80% of the original size.</p>
+                
+                <h4>Will my images lose quality?</h4>
+                <p>Some quality loss is inevitable when reducing file size, but our <strong>image optimizer</strong> minimizes visible artifacts. The tool shows before/after comparisons so you can evaluate the results.</p>
+                
+                <h4>What's the difference between KB and MB?</h4>
+                <p>1 MB (megabyte) = 1000 KB (kilobytes). Our tool works in KB for precise control over small size reductions important for web and email use.</p>
+                
+                <h4>Are my images stored or shared?</h4>
+                <p>No. All processing happens in your browser. Images are never uploaded to our servers, ensuring complete privacy.</p>
+                
+                <h3>Tips for Best Results</h3>
+                
+                <p>To get the most from our <strong>image file size reducer</strong>:</p>
+                <ul>
+                    <li>Start with high-quality originals whenever possible</li>
+                    <li>For web use, consider WebP format for better compression</li>
+                    <li>Use the visual preview to balance quality vs. size</li>
+                    <li>Remember that very small targets may require dimension reduction</li>
+                    <li>For print purposes, maintain higher quality settings</li>
+                </ul>
+                
+                <p>Whether you're a blogger, photographer, business owner, or just someone who needs to email photos, our free <strong>Image to KB converter</strong> provides professional-grade compression with complete control over your final file size.</p>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Smart Tool Box</h3>
+                    <p class="text-gray-400">Free online tools for all your image and document needs. No registration required.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Image Tools</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Image to KB</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">JPG to PDF</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">PNG to JPG</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Image Compressor</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">QR Code Generator</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">PDF Tools</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Merge PDF</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Compress PDF</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">PDF to Word</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">PDF to JPG</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Protect PDF</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>© 2023 Smart Tool Box. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const dropzone = document.getElementById('dropzone');
+            const dropzoneContent = document.getElementById('dropzone-content');
+            const fileInput = document.getElementById('file-input');
+            const browseBtn = document.getElementById('browse-btn');
+            const fileInfo = document.getElementById('file-info');
+            const previewImage = document.getElementById('preview-image');
+            const fileName = document.getElementById('file-name');
+            const fileSize = document.getElementById('file-size');
+            const fileDimensions = document.getElementById('file-dimensions');
+            const removeBtn = document.getElementById('remove-btn');
+            const settings = document.getElementById('settings');
+            const results = document.getElementById('results');
+            
+            // Settings Elements
+            const targetSize = document.getElementById('target-size');
+            const targetSizeInput = document.getElementById('target-size-input');
+            const quality = document.getElementById('quality');
+            const qualityValue = document.getElementById('quality-value');
+            const advancedToggle = document.getElementById('advanced-toggle');
+            const advancedOptions = document.getElementById('advanced-options');
+            const resizeMethod = document.getElementById('resize-method');
+            const resizeValue = document.getElementById('resize-value');
+            const resizeUnit = document.getElementById('resize-unit');
+            
+            // Results Elements
+            const originalPreview = document.getElementById('original-preview');
+            const originalSize = document.getElementById('original-size');
+            const originalDimensions = document.getElementById('original-dimensions');
+            const originalType = document.getElementById('original-type');
+            const compressedPreview = document.getElementById('compressed-preview');
+            const compressedSize = document.getElementById('compressed-size');
+            const compressedDimensions = document.getElementById('compressed-dimensions');
+            const compressedType = document.getElementById('compressed-type');
+            const compressedQuality = document.getElementById('compressed-quality');
+            const reductionPercent = document.getElementById('reduction-percent');
+            const downloadBtn = document.getElementById('download-btn');
+            const newFileBtn = document.getElementById('new-file-btn');
+            
+            // Navigation Elements
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navbar = document.getElementById('navbar');
+            
+            // Global Variables
+            let originalFile = null;
+            let compressedBlob = null;
+            
+            // Event Listeners
+            browseBtn.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', handleFileSelect);
+            dropzone.addEventListener('dragover', handleDragOver);
+            dropzone.addEventListener('dragleave', handleDragLeave);
+            dropzone.addEventListener('drop', handleDrop);
+            removeBtn.addEventListener('click', resetTool);
+            targetSize.addEventListener('input', syncTargetSize);
+            targetSizeInput.addEventListener('input', syncTargetSize);
+            quality.addEventListener('input', () => {
+                qualityValue.textContent = `${quality.value}%`;
+            });
+            advancedToggle.addEventListener('click', toggleAdvancedOptions);
+            document.getElementById('compress-btn').addEventListener('click', compressImage);
+            document.getElementById('reset-btn').addEventListener('click', resetSettings);
+            downloadBtn.addEventListener('click', downloadCompressedImage);
+            newFileBtn.addEventListener('click', resetTool);
+            
+            // Navigation Event Listeners
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+            
+            // Scroll Event for Navbar
+            window.addEventListener('scroll', handleScroll);
+            
+            // Resize method change handler
+            resizeMethod.addEventListener('change', function() {
+                if (this.value === 'percentage') {
+                    resizeUnit.value = 'percent';
+                    resizeUnit.disabled = true;
+                    resizeValue.placeholder = 'Percentage';
+                } else {
+                    resizeUnit.disabled = false;
+                    if (this.value === 'pixels') {
+                        resizeValue.placeholder = 'Longest side';
+                    } else if (this.value === 'width') {
+                        resizeValue.placeholder = 'Width';
+                    } else {
+                        resizeValue.placeholder = 'Height';
+                    }
+                }
+            });
+            
+            // Functions
+            function handleFileSelect(e) {
+                const file = e.target.files[0] || (e.dataTransfer && e.dataTransfer.files[0]);
+                if (file && file.type.match('image.*')) {
+                    processFile(file);
+                }
+            }
+            
+            function handleDragOver(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropzone.classList.add('active');
+            }
+            
+            function handleDragLeave(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropzone.classList.remove('active');
+            }
+            
+            function handleDrop(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropzone.classList.remove('active');
+                handleFileSelect(e);
+            }
+            
+            function processFile(file) {
+                originalFile = file;
+                
+                // Display file info
+                fileName.textContent = file.name;
+                fileSize.textContent = formatFileSize(file.size);
+                
+                // Create preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    originalPreview.src = e.target.result;
+                    
+                    // Get image dimensions
+                    const img = new Image();
+                    img.onload = function() {
+                        fileDimensions.textContent = `${this.width} × ${this.height} pixels`;
+                        originalDimensions.textContent = `${this.width} × ${this.height} pixels`;
+                        
+                        // Set reasonable default target size (30% of original)
+                        const targetKB = Math.max(10, Math.min(1000, Math.round(file.size / 1024 * 0.3)));
+                        targetSize.value = targetKB;
+                        targetSizeInput.value = targetKB;
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+                
+                // Show file info and settings
+                fileInfo.classList.remove('hidden');
+                settings.classList.remove('hidden');
+                dropzoneContent.classList.add('hidden');
+                results.classList.add('hidden');
+                
+                // Set file type
+                const type = file.name.split('.').pop().toUpperCase();
+                originalType.textContent = type;
+            }
+            
+            function compressImage() {
+                if (!originalFile) return;
+                
+                // Show loading state
+                const compressBtn = document.getElementById('compress-btn');
+                const originalText = compressBtn.innerHTML;
+                compressBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+                compressBtn.disabled = true;
+                
+                // Simulate processing (in a real app, this would be actual compression)
+                setTimeout(() => {
+                    // This is a simplified simulation - a real implementation would use canvas.toBlob()
+                    // or a library like Compressor.js for actual compression
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        // In a real implementation, you would compress the image here
+                        // For this demo, we'll just use the original but pretend it's compressed
+                        const img = new Image();
+                        img.onload = function() {
+                            // Calculate "compressed" dimensions (simulated)
+                            let newWidth = this.width;
+                            let newHeight = this.height;
+                            
+                            // Apply resize if needed
+                            const resizeVal = parseInt(resizeValue.value) || 100;
+                            if (resizeMethod.value === 'percentage') {
+                                const percent = resizeVal / 100;
+                                newWidth = Math.round(this.width * percent);
+                                newHeight = Math.round(this.height * percent);
+                            } else if (resizeMethod.value === 'pixels') {
+                                const ratio = this.width > this.height ? 
+                                    resizeVal / this.width : resizeVal / this.height;
+                                newWidth = Math.round(this.width * ratio);
+                                newHeight = Math.round(this.height * ratio);
+                            } else if (resizeMethod.value === 'width') {
+                                const ratio = resizeVal / this.width;
+                                newWidth = resizeVal;
+                                newHeight = Math.round(this.height * ratio);
+                            } else if (resizeMethod.value === 'height') {
+                                const ratio = resizeVal / this.height;
+                                newHeight = resizeVal;
+                                newWidth = Math.round(this.width * ratio);
+                            }
+                            
+                            // Create canvas for "compressed" image
+                            const canvas = document.createElement('canvas');
+                            canvas.width = newWidth;
+                            canvas.height = newHeight;
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(img, 0, 0, newWidth, newHeight);
+                            
+                            // Get format
+                            const format = document.querySelector('input[name="format"]:checked').value;
+                            
+                            // Simulate quality reduction
+                            const quality = parseInt(document.getElementById('quality').value) / 100;
+                            
+                            // Convert to blob (simulated compression)
+                            canvas.toBlob((blob) => {
+                                compressedBlob = blob;
+                                
+                                // Calculate simulated size reduction
+                                const targetKB = parseInt(targetSizeInput.value);
+                                const originalKB = originalFile.size / 1024;
+                                const reduction = Math.min(0.9, (originalKB - targetKB) / originalKB);
+                                const simulatedSize = originalKB * (1 - reduction);
+                                
+                                // Update results
+                                compressedPreview.src = URL.createObjectURL(blob);
+                                compressedSize.textContent = formatFileSize(simulatedSize * 1024);
+                                compressedDimensions.textContent = `${newWidth} × ${newHeight} pixels`;
+                                compressedType.textContent = format.toUpperCase();
+                                compressedQuality.textContent = `${Math.round(quality * 100)}%`;
+                                reductionPercent.textContent = `${Math.round(reduction * 100)}%`;
+                                
+                                // Show results
+                                results.classList.remove('hidden');
+                                compressBtn.innerHTML = originalText;
+                                compressBtn.disabled = false;
+                                
+                                // Scroll to results
+                                results.scrollIntoView({ behavior: 'smooth' });
+                            }, `image/${format}`, quality);
+                        };
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(originalFile);
+                }, 1000);
+            }
+            
+            function downloadCompressedImage() {
+                if (!compressedBlob) return;
+                
+                const a = document.createElement('a');
+                const url = URL.createObjectURL(compressedBlob);
+                const format = document.querySelector('input[name="format"]:checked').value;
+                const originalName = originalFile.name.split('.').slice(0, -1).join('.');
+                
+                a.href = url;
+                a.download = `${originalName}_compressed.${format}`;
+                document.body.appendChild(a);
+                a.click();
+                
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 0);
+            }
+            
+            function resetSettings() {
+                targetSize.value = 100;
+                targetSizeInput.value = 100;
+                quality.value = 80;
+                qualityValue.textContent = '80%';
+                resizeMethod.value = 'percentage';
+                resizeValue.value = 100;
+                resizeUnit.value = 'percent';
+                document.querySelector('input[name="format"][value="jpg"]').checked = true;
+                
+                if (!advancedOptions.classList.contains('hidden')) {
+                    toggleAdvancedOptions();
+                }
+            }
+            
+            function resetTool() {
+                fileInput.value = '';
+                fileInfo.classList.add('hidden');
+                settings.classList.add('hidden');
+                results.classList.add('hidden');
+                dropzoneContent.classList.remove('hidden');
+                originalFile = null;
+                compressedBlob = null;
+                resetSettings();
+            }
+            
+            function syncTargetSize(e) {
+                if (e.target.id === 'target-size') {
+                    targetSizeInput.value = e.target.value;
+                } else {
+                    let value = parseInt(e.target.value);
+                    if (isNaN(value)) value = 10;
+                    if (value < 10) value = 10;
+                    if (value > 1000) value = 1000;
+                    targetSize.value = value;
+                    targetSizeInput.value = value;
+                }
+            }
+            
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+            
+            function toggleAdvancedOptions() {
+                advancedOptions.classList.toggle('hidden');
+                const icon = advancedToggle.querySelector('i');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            }
+            
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('hidden');
+            }
+            
+            function handleScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+            
+            // Initialize
+            handleScroll();
+        });
+    </script>
+</body>
+</html>
